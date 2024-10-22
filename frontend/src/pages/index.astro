@@ -1,11 +1,13 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import SearchBar from '../components/SearchBar.astro';
+import WeatherResult from '../components/WeatherResult.astro';
 ---
 
-<Layout title="Welcome to Astro.">
-	<main>
-
-		Hello, Astro! 🚀
-
-	</main>
+<Layout title="Can I jog today?">
+	<SearchBar
+	title='Can I jog today?',
+	placeholder='City'
+	/>
+	<WeatherResult/>
 </Layout>

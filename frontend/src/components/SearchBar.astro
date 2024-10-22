@@ -1,0 +1,42 @@
+---
+import Layout from "../layouts/Layout.astro";
+
+interface Props {
+    title: string;
+    placeholder: string;
+}
+
+const { title, placeholder } = Astro.props;
+---
+
+<Layout title={title}>
+    <div class="flex items-center justify-center min-h-screen">
+        <div class="flex flex-col items-center">
+            <div class="mb-2">
+                <i class="fas fa-running text-9xl text-gray-600"></i>
+            </div>
+            <h1 class="text-xl mb-4 text-center">{title}</h1>
+            <form 
+                hx-post="/api/v1/weather"
+                hx-params="city"
+                hx-target="#result-container"
+                hx-swap="innerHTML"
+                class="flex flex-col items-center"
+            >
+                <input 
+                    type="text" 
+                    name="city" 
+                    placeholder={placeholder} 
+                    required
+                    class="border border-gray-300 p-2 rounded-lg mt-2 mb-6"
+                />
+                <button 
+                    type="submit" 
+                    class="bg-gray-600 text-white p-2 rounded-lg"
+                >
+                    Search
+                </button>
+            </form>
+        </div>
+    </div>
+</Layout>
