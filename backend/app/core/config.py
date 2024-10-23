@@ -6,18 +6,24 @@ from pydantic_settings import BaseSettings
 
 load_dotenv(os.path.join(os.path.dirname(__file__), "../../.env"))
 
-class Settings(BaseSettings):
-    WEATHER_API_KEY : str
-    WEATHER_API_URL : str
 
-    @property
-    def weather_api_key(self) -> str:
-        return os.getenv("WEATHER_API_KEY")
-    
-    @property
-    def weather_api_url(self) -> str:
-        return os.getenv("WEATHER_API_URL")
-    
+class Settings(BaseSettings):
+    LOG_LEVEL: str
+    AUTHOR: str
+    CONTACT: str
+    DESCRIPTION: str
+    IMAGE_NAME: str
+    IMAGE_VERSION: str
+    HOST: str
+    PORT: int
+    API_PREFIX: str
+    DOC_URL: str
+    REDOC_URL: str
+    WEATHER_API_KEY: str
+    WEATHER_API_URL: str
+    IMAGES_API_URL: str
+    IMAGES_API_KEY: str
+
     class Config:
         env_file = os.getenv("ENV_FILE", ".env")
         env_file_encoding = "utf-8"
