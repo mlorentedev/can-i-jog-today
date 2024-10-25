@@ -6,7 +6,8 @@ from fastapi.middleware.cors import CORSMiddleware
 from app.core.logger import logger_config
 from app.core.config import get_settings
 
-from app.routes.health import health_router
+from app.routes.health_router import health_router
+from app.routes.weather_router import weather_router
 
 log = logger_config(__name__)
 settings = get_settings()
@@ -44,6 +45,7 @@ def init_app():
     )
 
     app.include_router(health_router)
+    app.include_router(weather_router, prefix=settings.API_PREFIX)
 
     log.info("Application started successfully")
 
